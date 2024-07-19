@@ -1,0 +1,13 @@
+<package>
+  <description brief="bag_cvsa">
+
+     bag_cvsa
+
+  </description>
+  <author>Paolo</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/bag_cvsa</url>
+  <depend package="rospy"/>
+
+</package>
