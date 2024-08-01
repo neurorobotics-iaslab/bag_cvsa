@@ -3,6 +3,8 @@
 import os
 import rospy
 from time import gmtime, strftime
+import yaml
+import rosparam
 
 class save_bag:
     def __init__(self):
@@ -17,6 +19,13 @@ class save_bag:
         topics = "/cvsa/eye /events/bus /cvsa/trials_keep"
         record_command = f'rosbag record -O {bag_file} {topics}'
         
+        # to save parameters used
+        param_file = filepath + '/' + subject + '_' + date_string + '.yaml'
+        params = rosparam.get_param('/')
+        with open(param_file, 'w') as file:
+            yaml.dump(params, file, default_flow_style=False)
+        
+        # to save the bag file
         os.popen(record_command)
         
 if __name__ == '__main__':
