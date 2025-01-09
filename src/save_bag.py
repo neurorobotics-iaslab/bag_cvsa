@@ -14,13 +14,13 @@ class save_bag:
         
         date_string = strftime("%Y%m%d_%H%M%S", gmtime())
         
-        bag_file = filepath + '/' + subject + '/' + subject + '_' + date_string + '.bag'
+        bag_file = filepath + '/' + subject + '_' + date_string + '.bag'
         
         topics = "/cvsa/eye /events/bus /cvsa/trials_keep"
         record_command = f'rosbag record -O {bag_file} {topics}'
         
         # to save parameters used
-        param_file = filepath + '/' + subject + '/' + subject + '_' + date_string + '.yaml'
+        param_file = filepath + '/' + subject + '_' + date_string + '.yaml'
         params = rosparam.get_param('/')
         with open(param_file, 'w') as file:
             yaml.dump(params, file, default_flow_style=False)
